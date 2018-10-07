@@ -42,6 +42,10 @@ module.exports = function validateRegisterInput(data) {
     errors.password2 = 'Passwords must match'
   }
 
+  if (validator.isEmpty(data.avatar)) {
+    errors.avatar = 'Avatar field is required'
+  }
+
   return {
     errors,
     isValid: isEmpty(errors)
