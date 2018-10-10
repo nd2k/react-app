@@ -1,15 +1,17 @@
-import { TEST_DISPATCH } from '../actions/types'
+import { SET_CURRENT_USER } from '../actions/types'
+import isEmpty from '../validations/is-empty'
 
 const initialState = {
-  isAuthenticate: false,
+  isAuthenticated: false,
   user: {}
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case TEST_DISPATCH:
+    case SET_CURRENT_USER:
       return {
         ...state,
+        isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       }
     default:
